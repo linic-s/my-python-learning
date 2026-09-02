@@ -18,13 +18,10 @@ def ansely_st(students):
         if student["score"]<=min_sc:
             min_sc=student["score"]
             minpeople=student["name"]
-        average=total/all
-    print(max,maxpeople)
-    print(min_sc,minpeople)
-    print(count)
-    print(all)
-    print(total)
-    print(average)
-result=ansely_st(students)
+    average=total/all
+    return max,min_sc,count,all,total,maxpeople,minpeople,average    
+x,y,z,g,f,h,k,l=ansely_st(students)
+print(x,y,z,g,f,h,k,l)
+
 
 
