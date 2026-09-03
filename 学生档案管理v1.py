@@ -1,11 +1,27 @@
+import json
+try:
+    with open("student.json", "r") as file:
+        students = json.load(file)
+
+except FileNotFoundError:
+    students = [
+        {"name": "Tom", "score": 85},
+        {"name": "Jack", "score": 55},
+        {"name": "Lucy", "score": 92}
+    ]
+def save_students():
+    
+    with open("student.json","w")as file:
+        json.dump(students,file)
 def show_student(student):
     print(student)
-students = [{"name": "Tom", "score": 85},{"name": "Jack", "score": 55},{"name": "Lucy", "score": 92}]
+
 def input_student():
     student={}
     student["name"]=input("your name?")
     student["score"]=int(input("your score?"))
     students.append(student)
+    save_students()
     print(students)
 def search_student():
     a=input("student name:")
@@ -24,11 +40,13 @@ def remove_student():
     for student in students:
         if b.lower()==student["name"].lower():
             students.remove(student)
+            save_students()
             find=False
             print("student is removed!")
             break
     if  find:
         print("student is no found!")
+    
 
 def update_student():
     c=input("student name:")
@@ -38,11 +56,14 @@ def update_student():
             d=int(input("new score"))
             student["score"]=d
             print(student["score"])
+        save_students()
             
 
-print("student system:1. Show students  2. Add student 3.search student 4.remove student 0. Exit")
+
 
 while True:
+    print("student system:1. Show students  2. Add student 3.search student 4.remove student 5.update 0. Exit")
+
     w=int(input("your choose?"))
 
     if w==1:
